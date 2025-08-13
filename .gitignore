@@ -1,0 +1,38 @@
+# Build artifacts
+**/bin/
+**/obj/
+[Bb]uild/
+[Bb]ld/
+
+# Logs & tests
+*.log
+logs/
+TestResults/
+*.coverage
+*.coveragexml
+.coverage*/
+
+# IDEs
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code (keep team-friendly files, ignore machine ones)
+.vscode/*
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+
+# Config overrides / secrets
+appsettings.*.local.json
+**/*secret*.json
+
+# OS noise
+.DS_Store
+Thumbs.db
+Desktop.ini

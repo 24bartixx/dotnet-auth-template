@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApiTemplate", "AuthApiTemplate\AuthApiTemplate.csproj", "{1CE8A5FB-42E6-A79F-512B-5965E2FE6F81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CE8A5FB-42E6-A79F-512B-5965E2FE6F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE8A5FB-42E6-A79F-512B-5965E2FE6F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE8A5FB-42E6-A79F-512B-5965E2FE6F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE8A5FB-42E6-A79F-512B-5965E2FE6F81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4246D24-CA32-4A35-B3E6-A90D52A2BF8A}
+	EndGlobalSection
+EndGlobal

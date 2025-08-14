@@ -32,6 +32,10 @@ packages/
 appsettings.*.local.json
 **/*secret*.json
 
+# Local dev settings
+appsettings.Development.json
+appsettings.Local.json
+
 # OS noise
 .DS_Store
 Thumbs.db

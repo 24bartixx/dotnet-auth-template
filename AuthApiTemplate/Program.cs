@@ -1,3 +1,6 @@
+using AuthApiTemplate.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // --- API Setup ---
@@ -13,15 +16,23 @@ builder.Services.AddControllers(); // Adds controllers and API Explorer automati
 // creates SwaggerDocument
 builder.Services.AddSwaggerGen();
 
+// add AppDbContext 
+// make sure that "ConnectionStrings": {"DefaultConnection": "..."} is defined in your app settings
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();           // expose JSON SwaggerDocument --> /swagger/v2/swagger.json
     app.UseSwaggerUI();         // swagger -> /swagger
 }
 
+// middleware redirecting HTTP requests to HTTPS
 app.UseHttpsRedirection();
+
+// discover attribute-routed controller actions and register them as endpoints (routing table).
+app.MapControllers();
 
 app.Run();

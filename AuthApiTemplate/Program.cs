@@ -1,6 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// build the OpenAPI spec from the routes / SwaggerDocument
+// --- API Setup ---
+// Uncomment ONE of the following depending on API style:
+
+// 1) Minimal API
+// builder.Services.AddEndpointsApiExplorer(); // Required for Swagger with minimal APIs
+
+// 2) Controller-based API
+builder.Services.AddControllers(); // Adds controllers and API Explorer automatically
+
+// -- Swagger ---
+// creates SwaggerDocument
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

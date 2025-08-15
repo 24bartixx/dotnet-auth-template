@@ -1,4 +1,5 @@
 using AuthApiTemplate.Infrastructure.Data;
+using AuthApiTemplate.Infrastructure.Identity;
 using AuthApiTemplate.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +33,14 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequiredLength = 7;
 })
+.AddRoles<IdentityRole>()                           // register RoleManager + handle details of adding a role to AspNetRoles 
 .AddEntityFrameworkStores<AppDbContext>();          // give UserManger and RoleManager database-backed store
 
 var app = builder.Build();
+
+// create missing Identity roles
+// https://learn.microsoft.com/en-us/answers/questions/1529111/how-to-set-asp-net-core-identity-role-automaticall?utm_source=chatgpt.com
+await IdentitySeeder.InitializeRoles(app.Services);
 
 // configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

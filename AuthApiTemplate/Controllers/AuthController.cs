@@ -1,4 +1,6 @@
+using AuthApiTemplate.Dtos;
 using AuthApiTemplate.Dtos.Auth;
+using AuthApiTemplate.Mappers;
 using AuthApiTemplate.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +37,8 @@ namespace AuthApiTemplate.Controllers
                 IdentityResult roleAdditionResult = await _userManager.AddToRoleAsync(newAppUser, "User");
                 if (roleAdditionResult.Succeeded)
                 {
-                    // TODO: generate token and pass it to created
-                    return Created();
+                    UserDto userDto = newAppUser.ToUserDtoFromRegister();
+                    return Ok(userDto);
                 }
                 else
                 {

@@ -29,7 +29,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireDigit = true;
-     options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireNonAlphanumeric = true;
     options.Password.RequiredLength = 7;
 })
 .AddEntityFrameworkStores<AppDbContext>();          // give UserManger and RoleManager database-backed store

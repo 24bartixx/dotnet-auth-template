@@ -1,4 +1,6 @@
 using AuthApiTemplate.Infrastructure.Data;
+using AuthApiTemplate.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,18 @@ builder.Services.AddSwaggerGen();
 // add AppDbContext 
 // make sure that "ConnectionStrings": {"DefaultConnection": "..."} is defined in your app settings
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// add the  identity system configuration for the specified User and Role types
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireDigit = true;
+     options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 7;
+})
+.AddEntityFrameworkStores<AppDbContext>();          // give UserManger and RoleManager database-backed store
 
 var app = builder.Build();
 
